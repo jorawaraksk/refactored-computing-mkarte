@@ -1,7 +1,7 @@
 import os
 
 # Renamed to prevent clashing with the Compressor bot token
-RESTRICTED_BOT_TOKEN = os.environ.get("RESTRICTED_BOT_TOKEN", "7078710813:AAEewmdbVbBK9F67F1h2IwOl0IVAI8YXYlo")
+RESTRICTED_BOT_TOKEN = os.environ.get("RESTRICTED_BOT_TOKEN", "7173557037:AAFkiK1SF_CS0ajWo8wbqeo6ZktGoD65rN8")
 
 # Your API ID from my.telegram.org
 API_ID = int(os.environ.get("API_ID", "16732227"))
