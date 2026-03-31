@@ -16,8 +16,12 @@ try:
     BOT_TOKEN = "7142361995:AAHHDmYyE4plBuzBTO4Q0fArJ3P4kzzETzE"
     
     # Other configurations
+    # DEV stays as an integer because the code checks 'e.sender_id != DEV'
     DEV = config("DEV", default=5868426717, cast=int)
-    OWNER = config("OWNER", default=5868426717, cast=int)
+    
+    # OWNER changed to a string. This prevents the 'int is not iterable' error!
+    OWNER = config("OWNER", default="5868426717")
+    
     ffmpegcode = ["-preset veryfast -c:v libx264 -b:a 64k -crf 38 -map 0 -c:s copy"]
     THUMB = config("THUMBNAIL", default="https://injured-tan-vshddubr0a.edgeone.app/IMG_20260326_132346_678.jpg")
 
