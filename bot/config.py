@@ -1,30 +1,27 @@
-#    This file is part of the Compressor distribution.
-#    Copyright (c) 2021 Danish_00
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, version 3.
-#
-#    This program is distributed in the hope that it will be useful, but
-#    WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-#    General Public License for more details.
-#
-# License can be found in <
-# https://github.com/1Danish-00/CompressorQueue/blob/main/License> .
-
 from decouple import config
+import logging
+
+# Ensure LOGS is defined so the except block works
+logging.basicConfig(level=logging.INFO)
+LOGS = logging.getLogger(__name__)
 
 try:
-    APP_ID = config("APP_ID", cast=int)
-    API_HASH = config("API_HASH")
-    BOT_TOKEN = config("7142361995:AAHHDmYyE4plBuzBTO4Q0fArJ3P4kzzETzE")
+    # Uses .env value if present, otherwise defaults to '16732227'
+    APP_ID = config("APP_ID", default=16732227, cast=int)
+    
+    # Uses .env value if present, otherwise defaults to your hash string
+    API_HASH = config("API_HASH", default="8b5594ad7ad37f3a0a7ddbfb3963bb51")
+    
+    # Hardcoded Bot Token (Not reading from decouple/env)
+    BOT_TOKEN = "7142361995:AAHHDmYyE4plBuzBTO4Q0fArJ3P4kzzETzE"
+    
+    # Other configurations
     DEV = config("DEV", default=5868426717, cast=int)
-    OWNER = config("OWNER" , "5868426717")
+    OWNER = config("OWNER", default=5868426717, cast=int)
     ffmpegcode = ["-preset veryfast -c:v libx264 -b:a 64k -crf 38 -map 0 -c:s copy"]
-    THUMB = config("THUMBNAIL" , "https://graph.org/file/1cc8d7082dc910c0ccee8.jpg")
+    THUMB = config("THUMBNAIL", default="https://injured-tan-vshddubr0a.edgeone.app/IMG_20260326_132346_678.jpg")
+
 except Exception as e:
-    LOGS.info("Environment vars Missing")
-    LOGS.info("something went wrong")
+    LOGS.info("Configuration Error occurred")
     LOGS.info(str(e))
     exit(1)
